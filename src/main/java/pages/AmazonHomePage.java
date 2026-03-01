@@ -81,6 +81,8 @@ public class AmazonHomePage extends TestBase {
     	        String prize=iphonePrize.getText();
     	       System.out.println("Prize of phone 17 air is: "+prize);
     	       
+    	       System.out.println("Prize of phone 17 air is: "+prize);
+    	       
     	       util.takeScreenshotAtEndOfTest();
     	       
     	       driver.close();
