@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
 import base.TestBase;
 import utils.CommonUtils;
 
@@ -90,5 +92,13 @@ public class AmazonHomePage extends TestBase {
     	}
     	driver.switchTo().window(parentWindow);
         
+    }
+    public void verifyAPIGet() {
+    	baseURI="https://reqres.in/api/test-suite/";
+    	given()
+            .get("collections/users/records")
+    .then()
+        .statusCode(200)
+        .log().all();
     }
 }

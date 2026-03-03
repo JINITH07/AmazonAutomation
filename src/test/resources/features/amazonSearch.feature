@@ -1,5 +1,6 @@
 Feature: Amazon Search Functionality
 
+@amazon
   Scenario: Search for a product on Amazon
     Given user launches the browser
     And user navigates to "https://www.amazon.in"

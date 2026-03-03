@@ -34,4 +34,9 @@ public class AmazonSteps extends TestBase {
     public void user_searches_and_Prize(String product) throws InterruptedException, IOException {
         homePage.searchForProductnew(product);
     }
+
+    @Then("user verified API Get status")
+    public void user_verified_api() {
+        homePage.verifyAPIGet();
+    }
 }
