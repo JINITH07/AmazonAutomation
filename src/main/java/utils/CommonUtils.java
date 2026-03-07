@@ -1,10 +1,17 @@
 package utils;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
+
 import org.apache.commons.io.FileUtils;
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import base.TestBase;
@@ -22,5 +29,30 @@ public class CommonUtils extends TestBase {
         
         // 3. Copy the file to your desired location
         FileUtils.copyFile(scrFile, new File(currentDir + "/screenshots/" + timestamp + ".png"));
+    }
+    public String getTestData(String key) throws FileNotFoundException
+    {
+    	FileInputStream fis=new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/testdata.properties");
+    	Properties prop=new Properties();
+    	
+    	try {
+			prop.load(fis);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return prop.getProperty(key);
+
+    }
+    public static String ReadExcel(int row, int column) throws IOException
+    {
+    	FileInputStream fis=new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/TestData.xlsx");
+    	
+    	XSSFWorkbook workbook = new XSSFWorkbook(fis);
+    	XSSFSheet sheet=workbook.getSheet("Sheet1");
+    	
+    	DataFormatter formatter=new DataFormatter();
+    	return formatter.formatCellValue(sheet.getRow(row).getCell(column));
+    	
     }
 }

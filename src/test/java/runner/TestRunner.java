@@ -6,7 +6,13 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "stepdefinitions",
-        tags= "@APIAutomation"
+        tags= "@TestAutomation",
+        plugin = {
+			        "pretty",
+			        "html:target/cucumber-report.html",
+			        "json:target/cucumber.json",
+			        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+        			    }
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
 
