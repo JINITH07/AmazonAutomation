@@ -15,14 +15,13 @@ public class TestBase {
     public static void initialization(String browserName) {
     	
     	if (browserName.equalsIgnoreCase("chrome")) {
-            driver = new ChromeDriver();
+            
             
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless=new");
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
-
-            WebDriver driver = new ChromeDriver(options);
+            driver = new ChromeDriver(options);
         } else if (browserName.equalsIgnoreCase("firefox")) {
             driver = new FirefoxDriver();
         } else if (browserName.equalsIgnoreCase("edge")) {
