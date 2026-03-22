@@ -1,17 +1,20 @@
 package stepdefinitions;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import base.TestBase;
 import io.cucumber.java.en.*;
 import pages.AmazonHomePage;
+import utils.CommonUtils;
 
 public class AmazonSteps extends TestBase {
     AmazonHomePage homePage;
 
     @Given("user launches the browser")
-    public void user_launches_the_browser() {
-        TestBase.initialization();
+    public void user_launches_the_browser() throws FileNotFoundException {
+    	String Browser=CommonUtils.getTestData("browser");
+        TestBase.initialization(Browser);
         homePage = new AmazonHomePage();
     }
 

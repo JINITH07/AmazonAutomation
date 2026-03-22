@@ -30,7 +30,7 @@ public class CommonUtils extends TestBase {
         // 3. Copy the file to your desired location
         FileUtils.copyFile(scrFile, new File(currentDir + "/screenshots/" + timestamp + ".png"));
     }
-    public String getTestData(String key) throws FileNotFoundException
+    public static String getTestData(String key) throws FileNotFoundException
     {
     	FileInputStream fis=new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/testdata.properties");
     	Properties prop=new Properties();
